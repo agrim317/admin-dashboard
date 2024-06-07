@@ -9,6 +9,7 @@
 :root {
     --background-color: #e2e8f0;
     --blue: #1992d4;
+    --orange: #f0b429;
 }
 
 a {
@@ -23,10 +24,11 @@ a {
 }
 
 body {
-    height: 100vh;
+    height: max(100vh, 900px);
+    width: max(100vw, 1200px);
 
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 3.8fr;
     grid-template-rows: 1fr 5fr;
 }
 
@@ -227,17 +229,19 @@ button {
 
 .main-content h2 {
     font-size: 1.3rem;
-    font-weight: 450;
+    font-weight: 500;
 
     margin-bottom: 15px;
+}
+
+.main-content > * {
+    display: flex;
+    flex-direction: column;
 }
 
 .projects {
     grid-column: 1;
     grid-row: 1 / -1;
-
-    display: flex;
-    flex-direction: column;
 }
 
 .announcements {
@@ -260,5 +264,96 @@ button {
 }
 
 .card {
+    border-radius: 10px;
     background-color: white;
+    flex: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.projects .card {
+    display: flex;
+    overflow: hidden;
+}
+
+.card-contents {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+
+    margin-bottom: 8px;
+}
+
+p {
+    color: grey;
+}
+
+.card-buttons {
+    flex: 1;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 25px;
+}
+
+.card-buttons img {
+    height: 30px;
+    width: 30px;
+    aspect-ratio: 1 / 1;
+}
+
+.projects .card::before {
+    content: '';
+    background-color: var(--orange);
+    width: 8px;
+}
+
+.announcements .card {
+    padding: 20px 25px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.announcement h4 {
+    font-size: 14px;
+    font-weight: 500;
+
+    margin-bottom: 2px;
+}
+
+.announcement p {
+    font-size: 12px;
+}
+
+.announcement + .announcement {
+    border-top: 1px solid grey;
+}
+
+.announcement {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.trending .card {
+    padding: 20px 25px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 50px; /* why does removing this line break everything? */
 }
